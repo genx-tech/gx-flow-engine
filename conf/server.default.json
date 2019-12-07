@@ -1,0 +1,52 @@
+{
+    "version": "@package.version",
+    "configByHostname": {},
+    "appLogger": "appLog",
+    "loggers": {
+        "accessLog": {
+            "useMetaKey": "meta",
+            "transports": [
+                {
+                    "type": "console",                    
+                    "options": {      
+                        "level": "verbose",                      
+                        "format": "#!jsv: log.format.combine(log.format.colorize(), log.format.simple())"
+                    }
+                }
+            ]
+        },
+        "appLog": {
+            "useMetaKey": "meta",
+            "transports": [
+                {
+                    "type": "console",                   
+                    "options": {      
+                        "level": "debug",                      
+                        "format": "#!jsv: log.format.combine(log.format.colorize(), log.format.simple())"
+                    }
+                }
+            ]
+        }
+    },
+    "timezone": "Australia/Sydney",  
+    "koa": {       
+        "keys": [ "a", "b"],
+        "httpPort": 2335       
+    },
+    "middlewares": {        
+        "accessLog": { "logger": "accessLog" },
+        "cors": {
+            "origin": "*"
+        },     
+        "compress": {},
+        "etag": {},
+        "serveStatic": {}
+    },
+    "appRouting": {        
+        "/": {
+            "name": "ep-api",
+            "options": {
+            }
+        }
+    }
+}

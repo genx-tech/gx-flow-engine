@@ -1,0 +1,46 @@
+{
+    "version": "1.0", 
+    "configByHostname": {},
+    "devConfigByGitUser": {},   
+    "appLogger": "appLog",
+    "loggers": {        
+        "appLog": {
+            "useMetaKey": "meta",
+            "transports": [
+                {
+                    "type": "console",                   
+                    "options": {      
+                        "level": "verbose",                      
+                        "format": "#!jsv: log.format.combine(log.format.colorize(), log.format.simple())"
+                    }
+                }
+            ]
+        },
+        "busiLog": {
+            "useMetaKey": "meta",
+            "transports": [
+                {
+                    "type": "console",                   
+                    "options": {      
+                        "level": "info",                      
+                        "format": "#!jsv: log.format.combine(log.format.colorize(), log.format.simple())"
+                    }
+                }
+            ]
+        }
+    },
+    "dataSource": {    
+        "mongodb": {
+            "epStore": {
+                "connection": "mongodb://root:root@localhost/ep-store?authSource=admin&useUnifiedTopology=1",
+                "logStatement": true
+            }
+        },    
+        "rabbitmq": {
+            "messageQueue": {
+                "connection": "amqp://rabbitmq:rabbitmq@localhost",
+                "logMessage": true
+            }
+        }
+    }
+}
